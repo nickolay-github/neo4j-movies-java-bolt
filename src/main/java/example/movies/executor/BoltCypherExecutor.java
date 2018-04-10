@@ -20,15 +20,14 @@ public class BoltCypherExecutor implements CypherExecutor {
     public BoltCypherExecutor(String url, String username, String password) {
         boolean hasPassword = password != null && !password.isEmpty();
         AuthToken token = hasPassword ? AuthTokens.basic(username, password) : AuthTokens.none();
-        driver = GraphDatabase.driver(url, token, Config.build().withEncryptionLevel(Config.EncryptionLevel.NONE).toConfig());
+        driver = GraphDatabase.driver(url, token, Config.build().withEncryption().toConfig());
     }
 
     @Override
-    public Iterator<Map<String, Object>> query(String query, Map<String, Object> params) {
+    public List<Map<String, Object>> query(String query, Map<String, Object> params) {
         try (Session session = driver.session()) {
-            List<Map<String, Object>> list = session.run(query, params)
+            return session.run(query, params)
                     .list( r -> r.asMap(BoltCypherExecutor::convert));
-            return list.iterator();
         }
     }
 

@@ -50,7 +50,7 @@ You add the dependency to the Neo4j-Java-Driver driver in your `pom.xml`:
 <dependency>
     <groupId>org.neo4j.driver</groupId>
     <artifactId>neo4j-java-driver</artifactId>
-    <version>1.0.0-RC2</version>
+    <version>1.5.1</version>
 </dependency>
 ----
 
@@ -76,16 +76,43 @@ try (Session session = driver.session()) {
 
 === Run locally:
 
-Start your local Neo4j Server (http://neo4j.com/download[Download & Install]), open the http://localhost:7474[Neo4j Browser].
-After logging in, install the Movies graph data set by entering the `:play movies` command, click the CREATE-statement, and hit the triangular "Run" button.
+Start your local Neo4j Desktop (http://neo4j.com/download[Download & Install]), open the Neo4j Browser.
+After logging in, install the Movies graph data set by entering the `:play movies` command, go to the next slide, click the CREATE-statement, and hit the triangular "Run" button.
+
+Set environment variable:
+
+----
+NEO4J_URL=bolt://neo4j:password@localhost
+----
 
 Start this application with:
 
 [source,shell]
 ----
 mvn compile exec:java
+
+or
+
+sh ./target/bin/webapp
 ----
 
-Go to http://localhost:8080
+Go to http://localhost:8080 for the webapp.
 
 You can search for movies by title or and click on any entry.
+
+.for remote server update your URL to
+----
+NEO4J_URL=bolt://user:password@host:port
+----
+
+To publish e.g. to Heroku just set the environment variable and push to the backend:
+
+.deploy to heroku
+----
+git clone https://github.com/neo4j-examples/neo4j-movies-java-bolt
+cd neo4j-movies-java-bolt
+
+heroku apps:create
+heroku config:set NEO4J_URL=bolt://user:password@host:port
+git push heroku
+----

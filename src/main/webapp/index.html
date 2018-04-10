@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://neo4j-contrib.github.io/developer-resources/language-guides/assets/css/main.css">
+    <link rel="stylesheet" href="https://rawgit.com/neo4j-contrib/developer-resources/gh-pages/language-guides/assets/css/main.css">
     <title>Neo4j Movies</title>
 </head>
 
@@ -26,7 +26,7 @@
             <div class="navbar-header col-sm-6 col-md-6">
                 <div class="logo-well">
                     <a href="http://neo4j.com/developer-resources">
-                    <img src="http://neo4j-contrib.github.io/developer-resources/language-guides/assets/img/logo-white.svg" alt="Neo4j World's Leading Graph Database" id="logo">
+                    <img src="https://rawgit.com/neo4j-contrib/developer-resources/gh-pages/language-guides/assets/img/logo-white.svg" alt="Neo4j World's Leading Graph Database" id="logo">
                     </a>
                 </div>
                 <div class="navbar-brand">
@@ -86,7 +86,7 @@
                     function (data) {
                         if (!data) return;
                         $("#title").text(data.title);
-                        $("#poster").attr("src","http://neo4j-contrib.github.io/developer-resources/language-guides/assets/posters/"+encodeURIComponent(data.title)+".jpg");
+                        $("#poster").attr("src","https://rawgit.com/neo4j-contrib/developer-resources/gh-pages/language-guides/assets/posters/"+encodeURIComponent(data.title)+".jpg");
                         var $list = $("#crew").empty();
                         data.cast.forEach(function (cast) {
                             $list.append($("<li>" + cast.name + " " +cast.job + (cast.job == "acted"?" as " + cast.role : "") + "</li>"));
