@@ -1,6 +1,7 @@
 package example.movies;
 
-import example.movies.backend.MovieService;
+import example.movies.backend.impl.MovieServiceCypherImpl;
+import example.movies.backend.interfaces.MovieService;
 import org.junit.Test;
 
 import java.util.Map;
@@ -16,7 +17,7 @@ public class DocTest {
 
     @Test
     public void testMovieFind() throws Exception {
-        MovieService service = new MovieService("bolt://neo4j:1234@localhost");
+        MovieService service = new MovieServiceCypherImpl("bolt://neo4j:1234@localhost");
         Map movie = service.findMovie("The Matrix");
         assertEquals("The Matrix", movie.get("title"));
         assertNotNull(movie.get("cast"));
