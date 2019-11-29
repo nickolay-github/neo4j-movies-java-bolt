@@ -17,7 +17,7 @@ public class DocTest {
 
     @Test
     public void testMovieFind() throws Exception {
-        MovieService service = new MovieServiceCypherImpl("bolt://neo4j:1234@localhost");
+        MovieService service = new MovieServiceCypherImpl("bolt://neo4j:123@localhost");
         Map movie = service.findMovie("The Matrix");
         assertEquals("The Matrix", movie.get("title"));
         assertNotNull(movie.get("cast"));
