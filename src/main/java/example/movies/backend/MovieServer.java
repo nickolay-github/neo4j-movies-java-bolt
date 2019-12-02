@@ -1,6 +1,7 @@
 package example.movies.backend;
 
 import example.movies.backend.impl.MovieServiceCypherImpl;
+import example.movies.backend.impl.MovieServiceGremlinImpl;
 import example.movies.backend.interfaces.MovieService;
 import example.movies.util.Util;
 
@@ -14,7 +15,7 @@ public class MovieServer {
     public static void main(String[] args) {
         port(Util.getWebPort());
         externalStaticFileLocation("src/main/webapp");
-        final MovieService service = new MovieServiceCypherImpl(Util.getNeo4jUrl());
+        final MovieService service = new MovieServiceGremlinImpl(Util.getNeo4jUrl());
         new MovieRoutes(service).init();
     }
 }
